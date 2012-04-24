@@ -17,23 +17,24 @@ class RomanNumerals
     'I'  => 1 }
 
   def initialize(n)
-    @n = n
+    @arabic = n
   end
 
   def to_roman
-    roman = ROMAN_ARABIC_MAP.map do |roman_numeral, arabic_numeral|
-      roman_numeral * roman_letter_multiplier(arabic_numeral)
+    roman_output = ""
+
+    ROMAN_ARABIC_MAP.map do |roman_numeral, arabic_numeral|
+      division_result_rounded = @arabic / arabic_numeral
+
+      if division_result_rounded > 0
+        roman_letters_added = roman_numeral * division_result_rounded
+        roman_output << roman_letters_added
+        decrement_remaining_arabic_value = division_result_rounded * arabic_numeral
+        @arabic -= decrement_remaining_arabic_value
+      end
     end
 
-    roman.join('')
-  end
-
-  private
-
-  def roman_letter_multiplier(arabic_numeral)
-    n_times = @n / arabic_numeral
-    @n -= (n_times * arabic_numeral)
-    n_times
+    roman_output
   end
 end
 
