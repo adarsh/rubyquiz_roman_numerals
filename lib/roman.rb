@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-class RomanNumerals
+class Roman
   MAX_ROMAN = 3999
 
   def initialize(value)
@@ -25,8 +25,4 @@ class RomanNumerals
 
     roman.join('')
   end
-end
-
-ARGV.each do |input|
-  puts RomanNumerals.new(input.to_i).to_roman
 end

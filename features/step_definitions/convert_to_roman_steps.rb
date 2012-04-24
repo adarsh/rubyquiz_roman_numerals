@@ -3,7 +3,7 @@ Given /^the input of "(\d+)"$/ do |input|
 end
 
 When /^the program is run$/ do
-  @output = `ruby roman_numerals.rb #{@input}`
+  @output = `ruby convert_to_roman.rb #{@input}`
   raise('Command failed') unless $?.success?
 end
 
